@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import Modal from '../Modal'
+import useCryPay from '../../hooks/cryppay'
 
 
 const NewTransactionModal = ({ modalOpen, setModalOpen }) => {
-    const [amount, setAmount] = useState(0)
-    const [receiver, setReceiver] = useState('')
-    const [transactionPurpose, setTransactionPurpose] = useState('')
+    
+    const {doTransaction,amount, setAmount,receiver, setReceiver ,transactionPurpose, setTransactionPurpose }= useCryPay();
 
     const onAmountInput = (e) => {
         e.preventDefault()
@@ -18,9 +18,10 @@ const NewTransactionModal = ({ modalOpen, setModalOpen }) => {
     }
 
     const onPay = async () => {
-        // Pay and add transaction funcationallity goes here!
+        await doTransaction({amount,receiver,transactionPurpose});
 
         // Clear states
+        setModalOpen(false)
         setAmount(0)
         setReceiver("")
         setTransactionPurpose("")

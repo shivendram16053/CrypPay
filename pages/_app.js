@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <title>Cash App</title>
+        <title>Cryp Pay</title>
       </Head>
       <WalletConnectionProvider>
         <Component {...pageProps} />

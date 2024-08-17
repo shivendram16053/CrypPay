@@ -7,14 +7,14 @@ import NewTransactionModal from "../components/transaction/NewTransactionModal";
 import TransactionsList from "../components/transaction/TransactionsList";
 import { useWallet } from "@solana/wallet-adapter-react";
 import TransactionQRModal from "../components/transaction/TransactionQRModal";
-import { transactions } from "../data/transactions";
 import { getAvatarUrl } from "../functions/getAvatarUrl";
-import useCryPay from "../hooks/crypay";
+import useCryPay from "../hooks/cryppay";
 
 const Home = () => {
-  const { connected, publicKey, avatar, userAddress ,balance} = useCryPay();
+  const { connected, publicKey, avatar, userAddress, balance, transactions,setTransactions ,setNewTransactionModalOpen,newTransactionModalOpen} =
+    useCryPay();
+
   const [transactionQRModalOpen, setTransactionQRModalOpen] = useState(false);
-  const [newTransactionModalOpen, setNewTransactionModalOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen ">
@@ -39,6 +39,8 @@ const Home = () => {
           modalOpen={newTransactionModalOpen}
           setModalOpen={setNewTransactionModalOpen}
         />
+
+        
       </header>
 
       <main className="flex flex-1 flex-col">
